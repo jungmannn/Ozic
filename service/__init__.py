@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session, make_response, jsonify
-# from service.model import searchInPlaystore, searchInAppstore
+from service.model import selectLogin
 import os 
 
 def createApp():
@@ -12,9 +12,27 @@ def initRoute(app):
     @app.route('/')
     def home():
         return render_template("index.html")
+    
     @app.route('/login')
     def login():
         return render_template("login.html")
+
+    @app.route('/loginProc', methods=['POST'])
+    def loginProc():
+        uid = request.form.get('uid')
+        upw = request.form.get('upw')
+        print(uid)
+        print(upw)
+        if not uid or not upw:
+            return render_template('alert.html', 
+                        msg='정확하게입력하세요')
+        else:
+            row = selectLogin(uid, upw)
+            if row:#회원이다
+                return row['uname'] + '님 반갑습니다!!!'
+            else:#회원아니다
+                return render_template('alert.html', 
+                        msg='회원아님')
     # # POST 전용
     # @app.route('/search', methods=['POST'])
     # def search():
