@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session, make_response, jsonify
-from service.model import selectLogin
+from service.model import selectLogin, searchJob
 import os 
 
 def createApp():
@@ -41,9 +41,11 @@ def initRoute(app):
                     
                     session['uid']  = uid
                     session['uname'] = row['uname']
+                    session['filtering'] = row['filtering']
                     return redirect( url_for('home'))
                 else:
                     return render_template('alert.html', msg='회원아님')
+
     @app.route('/logout')
     def logout():
         # 세션 없이 접근했을 경우 -> 홈페이지로 리다이렉트
@@ -56,60 +58,16 @@ def initRoute(app):
             session.pop('name', None)
         # 홈페이지 리다이렉트
         return redirect( url_for('home') )
-    # @app.route('/loginProc', methods=['GET', 'POST'])
-    # def loginProc():
-    #     if request.method == 'GET': # get
-    #         return render_template('login.html')
-    #     else:
-    #         uid = request.form.get('uid')
-    #         upw = request.form.get('upw')
-    #         if not uid or not upw:
-    #             return render_template('alert.html', msg='정확하게입력하세요')
-    #         else:
-    #             row = selectLogin(uid, upw)
-    #             if row:#회원이다
-    #                 return redirect('/')
-    #             else:#회원아니다
-    #                 return render_template('alert.html', 
-    #                         msg='회원아님')
-    # # POST 전용
-    # @app.route('/search', methods=['POST'])
-    # def search():
-    #     info = dict()
-    #     info['points']   = request.form.get('points')
-    #     info['type']     = request.form.get('type')
-    #     info['category'] = request.form.get('category')
-    #     info['rating']   = request.form.get('rating')
-    #     rows = searchInPlaystore( info )
-    #     print(rows)
-    #     if not rows:
-    #         rows = "결과 없음"
-    #     return render_template("search.html", rows= rows)
-    # if __name__ == '__main__':
-    #     app.run(debug=True)
     
-    # @app.route('/search2', methods=['POST'])
-    # def search2():
-    #     info = dict()
-    #     info['points']   = request.form.get('points')
-    #     info['type']     = request.form.get('type')
-    #     info['category'] = request.form.get('category')
-    #     info['rating']   = request.form.get('rating')
-    #     rows = searchInAppstore( info )
-    #     print(rows)
-    #     if not rows:
-    #         rows = "{}" 
-    #     return render_template("search2.html", rows= rows)
+    
+    @app.route('/search')
+    def search():
+        # 1. 전달된 데이터 획득 -> print로 출력
+        row = session['filtering']
+        pay = request.form.get('pay')
+        print( row )
+        print( pay )
+        # 2. 데이터를 d8로 보내서 쿼리 수행
+        rows = searchJob(row)
+        return render_template('searchJob.html', rows = rows)
         
-    # @app.route('/chart', methods=['POST'])
-    # def chart():
-    #     info = dict()
-    #     info['category'] = request.form.get('category')
-    #     return render_template("chart.html", info= info)
-    # if __name__ == '__main__':
-    #     app.run(debug=True)
-    # @app.route('/predict')
-    # def predict():
-    #     return render_template("predictionModel.html")
-    if __name__ == '__main__':
-        app.run(debug=True)
