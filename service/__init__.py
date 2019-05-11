@@ -21,8 +21,6 @@ def initRoute(app):
     def loginProc():
         uid = request.form.get('uid')
         upw = request.form.get('upw')
-        print(uid)
-        print(upw)
         if not uid or not upw:
             return render_template('alert.html', 
                         msg='정확하게입력하세요')
