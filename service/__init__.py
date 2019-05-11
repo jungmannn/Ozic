@@ -12,7 +12,9 @@ def initRoute(app):
     @app.route('/')
     def home():
         return render_template("index.html")
-
+    @app.route('/login')
+    def login():
+        return render_template("login.html")
     # # POST 전용
     # @app.route('/search', methods=['POST'])
     # def search():
