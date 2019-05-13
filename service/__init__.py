@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session, make_response, jsonify
 from service.model import selectLogin, searchJob
-import os 
+import os
 
 def createApp():
     app = Flask(__name__)
@@ -41,7 +41,7 @@ def initRoute(app):
                     
                     session['uid']  = uid
                     session['uname'] = row['uname']
-                    session['filtering'] = row['filtering']
+                    session['it'] = row['it']
                     return redirect( url_for('home'))
                 else:
                     return render_template('alert.html', msg='회원아님')
@@ -63,11 +63,10 @@ def initRoute(app):
     @app.route('/search')
     def search():
         # 1. 전달된 데이터 획득 -> print로 출력
-        row = session['filtering']
+        row = session['it']
         pay = request.form.get('pay')
         print( row )
         print( pay )
         # 2. 데이터를 d8로 보내서 쿼리 수행
         rows = searchJob(row)
         return render_template('searchJob.html', rows = rows)
-        

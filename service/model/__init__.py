@@ -38,7 +38,7 @@ def searchJob(row):
         with db_session.cursor() as cursor:
             sql_str = '''   select *
                             From ozicTest as a
-                            Where a.filter in(select b.filtering from oziclogin as b) and a.filter = %s;
+                            Where a.it in(select b.it from oziclogin as b) and a.it = %s;
                     '''
             cursor.execute( sql_str, (row))
             rows = cursor.fetchall()

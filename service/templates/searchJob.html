@@ -1,12 +1,32 @@
-<table>
+<table border="1">
     <thead>
         <tr>
             <th>기업</th>
+            <th>it직종</th>
+            <th>광고외주</th>
+            <th>문서작업</th>
+            <th>50만원이하</th>
+            <th>100만원이하</th>
+            <th>150만원이하</th>
+            <th>서울</th>
+            <th>경기</th>
+            <th>인천</th>
         </tr>
     </thead>
     <tbody>
+        {% for code in rows: %}
         <tr>
-            <td>{{rows[0]['filter']}}</td>
+            <td>{{ code.get('uname') }}</td>
+            <td>{{ code.get('it') }}</td>
+            <td>{{ code.get('ad') }}</td>
+            <td>{{ code.get('document') }}</td>
+            <td>{{ code.get('pay50u') }}</td>
+            <td>{{ code.get('pay100u') }}</td>
+            <td>{{ code.get('pay150u') }}</td>
+            <td>{{ code.get('seoul') }}</td>
+            <td>{{ code.get('gyeonggi') }}</td>
+            <td>{{ code.get('incheon') }}</td>
         </tr>
+        {% endfor %}
     </tbody>
 </table>
