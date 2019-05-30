@@ -59,14 +59,16 @@ def initRoute(app):
         # 홈페이지 리다이렉트
         return redirect( url_for('home') )
     
-    @app.route('/signup')
+    @app.route('/signup', methods=['POST'])
     def signup():
         uname = request.form.get('uname')
         uid = request.form.get('uid')
         upw = request.form.get('upw')
         fiter = dict()
         fiter = {
-            'it' : request.form.get('')
+            'it' : request.form.get('it'),
+            'ad' : request.form.get('ad'),
+            'doc' : request.form.get('doc')
         }
         return render_template('signup.html')    
     
