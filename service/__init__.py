@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session, make_response, jsonify
-from service.model import selectLogin, searchJob
+from service.model import selectLogin, searchJob, signUp
 import os
 
 def createApp():
@@ -59,18 +59,61 @@ def initRoute(app):
         # 홈페이지 리다이렉트
         return redirect( url_for('home') )
     
-    @app.route('/signup', methods=['POST'])
+    @app.route('/signup', methods=['GET', 'POST'])
     def signup():
-        uname = request.form.get('uname')
-        uid = request.form.get('uid')
-        upw = request.form.get('upw')
-        fiter = dict()
-        fiter = {
-            'it' : request.form.get('it'),
-            'ad' : request.form.get('ad'),
-            'doc' : request.form.get('doc')
-        }
-        return render_template('signup.html')    
+        if request.method=='GET':
+            print(request.method)
+            
+            return render_template('signup.html')
+        else:
+            uname = request.form.get('uname')
+            uid = request.form.get('uid')
+            upw = request.form.get('upw')
+            it = request.form.get('it')
+            ad = request.form.get('ad')
+            doc = request.form.get('doc')
+            p50 = request.form.get('p50')
+            p100 = request.form.get('p100')
+            p150 = request.form.get('p150')
+            seo = request.form.get('s')
+            gg = request.form.get('g')
+            inc = request.form.get('i')
+            if it == None:
+                it = '0'
+            if ad == None:
+                ad = '0'
+            if doc == None:
+                doc = '0'
+            if p50 == None:
+                p50 = '0'
+            if p100 == None:
+                p100 = '0'
+            if p150 == None:
+                p150 = '0'
+            if seo == None:
+                seo = '0'
+            if gg == None:
+                gg = '0'
+            if inc == None:
+                it = '0'
+            filter1 = dict()
+            filter1 = {
+                'uname' : uname,
+                'uid' : uid,
+                'upw' : upw,
+                'it' : it,
+                'ad' : ad,
+                'doc' : doc,
+                'p50' : p50,
+                'p100' : p100,
+                'p150' : p150,
+                'seo' : seo,
+                'gg' : gg,
+                'inc' : inc
+            }
+            print(filter1)
+            signUp(filter1)
+            return redirect(url_for('login'))
     
     @app.route('/search')
     def search():
@@ -82,3 +125,8 @@ def initRoute(app):
         # 2. 데이터를 d8로 보내서 쿼리 수행
         rows = searchJob(row)
         return render_template('searchJob.html', rows = rows)
+
+    @app.route('/mypage')
+    def mypage():
+        
+        return render_template('mypage.html')
