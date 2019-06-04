@@ -95,7 +95,7 @@ def initRoute(app):
             if gg == None:
                 gg = '0'
             if inc == None:
-                it = '0'
+                inc = '0'
             filter1 = dict()
             filter1 = {
                 'uname' : uname,
@@ -129,4 +129,4 @@ def initRoute(app):
     @app.route('/mypage')
     def mypage():
         
-        return render_template('mypage.html')
+        return render_template('mypage.html', name=session['uname'], uid = session['uid'])
