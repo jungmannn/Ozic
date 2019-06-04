@@ -28,157 +28,321 @@
 </head>
 
 <body id="page-top">
+
   <section class="bg-primary text-white mb-0" id="about">
-    <div class="container">
-      <h2 class="text-center text-uppercase text-white">{{name}}님의 페이지</h2>
-      <hr class="star-light mb-5">
-      <div class="row">
-        <div class="col-lg-4 ml-auto">
-          <p class="lead">사용자 이름 : {{name}}</p>
-          <p class="lead">사용자 아이디 : {{uid}}</p>
-          <img width="200px" src='../static/img/profile.png'>
-        </div>
+    <form class="form-signin" method="POST">
+      <div class="container">
+        <h2 class="text-center text-uppercase text-white">{{name}}님의 페이지</h2>
+        <hr class="star-light mb-5">
+        <div class="row">
+          <div class="col-lg-4 ml-auto">
+            <p class="lead">사용자 이름 : {{name}}</p>
+            <p class="lead">사용자 아이디 : {{uid}}</p>
+            <img width="200px" src='../static/img/profile.png'>
+          </div>
+          <div class="col-lg-6 mr-2">
+            <p class="lead border text-center">사용자 데이터</p>
+            <div style='display:inline; min-width:800px;'>
+              <div style='float:left; min-width:130px;'>
+                <div class="checkbox">
+                  <label>
+                    <div class="form-check">
+                      <h6>Job <span class="badge badge-secondary">직종</span></h6>
+                      <input class="form-check-input" type="checkbox" name="it" id="exampleRadios1" value="1">
+                      <label class="form-check-label" for="exampleRadios1">
+                        it
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="manu" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        제조업
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="serv" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        서비스업
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="mana" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        경영,관리
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="design" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        디자인
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="med" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        의료
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="media" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        미디어
+                      </label>
+                    </div>
+                </div>
+              </div>
+              <div style='float:left; min-width:130px;'>
+                <div class="checkbox">
+                  <label>
+                    <div class="form-check">
+                      <h6>Com <span class="badge badge-secondary">기업</span></h6>
+                      <input class="form-check-input" type="checkbox" name="major" id="exampleRadios1" value="1">
+                      <label class="form-check-label" for="exampleRadios1">
+                        대기업
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="medium" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        중기업
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="small" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        소기업
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="start" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        스타트업
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="public" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        공기업
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="listed" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        상장기업
+                      </label>
+                    </div>
+                </div>
+              </div>
+              <div style='float:left; min-width:130px;'>
+                <div class="checkbox">
+                  <label>
+                    <div class="form-check">
+                      <h6>Loc <span class="badge badge-secondary">지역</span></h6>
+                      <input class="form-check-input" type="checkbox" name="seo" id="exampleRadios1" value="1">
+                      <label class="form-check-label" for="exampleRadios1">
+                        서울
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="cap" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        수도권
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="gg" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        경기권
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="bu" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        부산
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="dae" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        대전
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="ul" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        울산
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="inc" id="exampleRadios2" value="option2">
+                      <label class="form-check-label" for="exampleRadios2">
+                        인천
+                      </label>
+                    </div>
+                </div>
+              </div>
+              <div style='float:left; min-width:130px;'>
+                <div class="checkbox">
+                  <label>
+                    <div class="form-check">
+                      <h6>Day <span class="badge badge-secondary">날짜</span></h6>
+                      <input class="form-check-input" type="checkbox" name="mon" id="exampleRadios1" value="1">
+                      <label class="form-check-label" for="exampleRadios1">
+                        월
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="tue" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        화
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="wed" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        수
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="thu" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        목
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="fri" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        금
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="sat" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        토
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="sun" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        일
+                      </label>
+                    </div>
+                </div>
+              </div>
+              <div style='float:left; min-width:130px;'>
+                <div class="checkbox">
+                  <label>
+                    <div class="form-check">
+                      <h6>Edu <span class="badge badge-secondary">학력</span></h6>
+                      <input class="form-check-input" type="checkbox" name="dedu" id="exampleRadios1" value="1">
+                      <label class="form-check-label" for="exampleRadios1">
+                        무관
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="gra" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        학사
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="mas" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        석/박사
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="hi" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        고졸
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="car" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        경력직
+                      </label>
+                    </div>
+                </div>
+              </div>
+              <div style='float:left; min-width:130px;'>
+                <div class="checkbox">
+                  <label>
+                    <div class="form-check">
+                      <h6>Time <span class="badge badge-secondary">시간</span></h6>
+                      <input class="form-check-input" type="checkbox" name="w16" id="exampleRadios1" value="1">
+                      <label class="form-check-label" for="exampleRadios1">
+                        W16
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="w24" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        W24
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="w32" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        W32
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="w40" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        W40
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="w50" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        W50
+                      </label>
+                    </div>
+                </div>
+              </div>
+              <div style='float:left; min-width:130px;'>
+                <div class="checkbox">
+                  <label>
+                    <div class="form-check">
+                      <h6>Pay <span class="badge badge-secondary">급여</span></h6>
+                      <input class="form-check-input" type="checkbox" name="p100" id="exampleRadios1" value="1">
+                      <label class="form-check-label" for="exampleRadios1">
+                        100-200
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="p200" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        200-300
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="p300" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        300-400
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="p400" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        400-500
+                      </label>
+                    </div>
+                </div>
+              </div>
 
-        <div class="col-lg-4 mr-5">
-          <p class="lead border text-center">사용자 데이터</p>
-          <div style='display:inline; min-width:800px;'>
-            <div style='float:left; min-width:115px;'>
-              <div class="form-check">
-                <h6>Job <span class="badge badge-secondary">직종</span></h6>
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
-                <label class="form-check-label" for="exampleRadios1">
-                  it
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                <label class="form-check-label" for="exampleRadios2">
-                  광고
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                <label class="form-check-label" for="exampleRadios2">
-                  문서작업
-                </label>
-              </div>
-            </div>
-            <div style='float:left; min-width:115px;'>
-              <div class="form-check">
-                <h6>Pay <span class="badge badge-secondary">급여</span></h6>
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
-                <label class="form-check-label" for="exampleRadios1">
-                  50미만
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                <label class="form-check-label" for="exampleRadios2">
-                  100미만
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                <label class="form-check-label" for="exampleRadios2">
-                  150미만
-                </label>
-              </div>
-            </div>
-            <div style='float:left; min-width:115px;'>
-              <div class="form-check">
-                <h6>Loc <span class="badge badge-secondary">지역</span></h6>
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
-                <label class="form-check-label" for="exampleRadios1">
-                  서울
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                <label class="form-check-label" for="exampleRadios2">
-                  경기도
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                <label class="form-check-label" for="exampleRadios2">
-                  인천
-                </label>
-              </div>
+
             </div>
           </div>
-          <div style='display:inline; min-width:400px;'>
-            <div style='float:left; min-width:115px;'>
-              <div class="form-check">
-                <h6>Job <span class="badge badge-secondary">직종</span></h6>
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
-                <label class="form-check-label" for="exampleRadios1">
-                  it
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                <label class="form-check-label" for="exampleRadios2">
-                  광고
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                <label class="form-check-label" for="exampleRadios2">
-                  문서작업
-                </label>
-              </div>
-            </div>
-            <div style='float:left; min-width:115px;'>
-              <div class="form-check">
-                <h6>Pay <span class="badge badge-secondary">급여</span></h6>
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
-                <label class="form-check-label" for="exampleRadios1">
-                  50미만
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                <label class="form-check-label" for="exampleRadios2">
-                  100미만
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                <label class="form-check-label" for="exampleRadios2">
-                  150미만
-                </label>
-              </div>
-            </div>
-            <div style='float:left; min-width:115px;'>
-              <div class="form-check">
-                <h6>Loc <span class="badge badge-secondary">지역</span></h6>
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
-                <label class="form-check-label" for="exampleRadios1">
-                  서울
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                <label class="form-check-label" for="exampleRadios2">
-                  경기도
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                <label class="form-check-label" for="exampleRadios2">
-                  인천
-                </label>
-              </div>
-            </div>
-          </div>
+        </div>
+        <div class="text-center mt-4">
+          <button id="btn-Yes" class="btn btn-xl btn-outline-light" type="submit">Modified</button>
         </div>
       </div>
-      <div class="text-center mt-4">
-        <button id="btn-Yes" class="btn btn-xl btn-outline-light" type="submit">Sign Up</button>
-
-      </div>
-    </div>
+    </form>
   </section>
+
 
   <!-- Bootstrap core JavaScript -->
   <script src="static/vendor/jquery/jquery.min.js"></script>

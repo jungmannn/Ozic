@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session, make_response, jsonify
-from service.model import selectLogin, searchJob, signUp
+from service.model import selectLogin, searchJob, signUp, dataMod
 import os
 
 def createApp():
@@ -69,47 +69,189 @@ def initRoute(app):
             uname = request.form.get('uname')
             uid = request.form.get('uid')
             upw = request.form.get('upw')
+
             it = request.form.get('it')
-            ad = request.form.get('ad')
-            doc = request.form.get('doc')
-            p50 = request.form.get('p50')
+            manu = request.form.get('manu')
+            serv = request.form.get('serv')
+            mana = request.form.get('mana')
+            design = request.form.get('design')
+            med = request.form.get('med')
+            media = request.form.get('media')
+
+            major = request.form.get('major')
+            medium = request.form.get('medium')
+            small = request.form.get('small')
+            start = request.form.get('start')
+            public = request.form.get('public')
+            listed = request.form.get('listed')
+
+            seo = request.form.get('seo')
+            cap = request.form.get('cap')
+            gg = request.form.get('gg')
+            bu = request.form.get('bu')
+            dae = request.form.get('dae')
+            ul = request.form.get('ul')
+            inc = request.form.get('inc')
+
             p100 = request.form.get('p100')
-            p150 = request.form.get('p150')
-            seo = request.form.get('s')
-            gg = request.form.get('g')
-            inc = request.form.get('i')
+            p200 = request.form.get('p200')
+            p300 = request.form.get('p300')
+            p400 = request.form.get('p400')
+
+            w16 = request.form.get('w16')
+            w24 = request.form.get('w16')
+            w32 = request.form.get('w16')
+            w40 = request.form.get('w40')
+            w50 = request.form.get('w50')
+
+            mon = request.form.get('mon')
+            tue = request.form.get('tue')
+            wed = request.form.get('wed')
+            thu = request.form.get('thu')
+            fri = request.form.get('fri')
+            sat = request.form.get('sat')
+            sun = request.form.get('sun')
+
+            dedu = request.form.get('it')
+            gra = request.form.get('gra')
+            mas = request.form.get('mas')
+            hi = request.form.get('hi')
+            car = request.form.get('car')
+
             if it == None:
                 it = '0'
-            if ad == None:
-                ad = '0'
-            if doc == None:
-                doc = '0'
-            if p50 == None:
-                p50 = '0'
-            if p100 == None:
-                p100 = '0'
-            if p150 == None:
-                p150 = '0'
+            if manu == None:
+                manu = '0'
+            if serv == None:
+                serv = '0'
+            if mana == None:
+                mana = '0'
+            if design == None:
+                design = '0'
+            if med == None:
+                med = '0'
+            if media == None:
+                media = '0'
+                
+            if major == None:
+                major = '0'
+            if medium == None:
+                medium = '0'
+            if small == None:
+                small = '0'
+            if start == None:
+                start = '0'
+            if public == None:
+                public = '0'
+            if listed == None:
+                listed = '0'
+
             if seo == None:
                 seo = '0'
+            if cap == None:
+                cap = '0'
             if gg == None:
                 gg = '0'
+            if bu == None:
+                bu = '0'
+            if dae == None:
+                dae = '0'
+            if ul == None:
+                ul = '0'
             if inc == None:
                 inc = '0'
+            
+            if p100 == None:
+                p100 = '0' 
+            if p200 == None:
+                p200 = '0'
+            if p300 == None:
+                p300 = '0'
+            if p400 == None:
+                p400 = '0'
+
+            if w16 == None:
+                w16 = '0'
+            if w24 == None:
+                w24 = '0'
+            if w32 == None:
+                w32 = '0'
+            if w40 == None:
+                w40 = '0' 
+            if w50 == None:
+                w50 = '0'
+            
+            if mon == None:
+                mon = '0'
+            if tue == None:
+                tue = '0'
+            if wed == None:
+                wed = '0'
+            if thu == None:
+                thu = '0'
+            if fri == None:
+                fri = '0'
+            if sat == None:
+                sat = '0'
+            if sun == None:
+                sun = '0'
+            
+            if dedu == None:
+                dedu = '0'
+            if mas == None:
+                mas = '0'
+            if gra == None:
+                gra = '0'
+            if hi == None:
+                hi = '0'
+            if car == None:
+                car = '0'  
             filter1 = dict()
             filter1 = {
                 'uname' : uname,
                 'uid' : uid,
                 'upw' : upw,
                 'it' : it,
-                'ad' : ad,
-                'doc' : doc,
-                'p50' : p50,
+                'manu' : manu,
+                'serv' : serv,
+                'mana' : mana,
+                'design' : design,
+                'med' : med,
+                'media' : media,
                 'p100' : p100,
-                'p150' : p150,
+                'p200' : p200,
+                'p300' : p300,
+                'p400' : p400,
                 'seo' : seo,
+                'cap' : cap,
                 'gg' : gg,
-                'inc' : inc
+                'bu' : bu,
+                'dae' : dae,
+                'ul' : ul,
+                'inc' : inc,
+                'mon' : mon,
+                'tue' : tue,
+                'wed' : wed,
+                'thu' : thu,
+                'fri' : fri,
+                'sat' : sat,
+                'sun' : sun,
+                'w16' : w16,
+                'w24' : w24,
+                'w32' : w32,
+                'w40' : w40,
+                'w50' : w50,
+                'dedu' : dedu,
+                'gra' : gra,
+                'mas' : mas,
+                'hi' : hi,
+                'car' : car,
+                'major' : major,
+                'medium' : medium,
+                'small' : small,
+                'start' : start,
+                'public' : public,
+                'listed' : listed
             }
             print(filter1)
             signUp(filter1)
@@ -126,7 +268,194 @@ def initRoute(app):
         rows = searchJob(row)
         return render_template('searchJob.html', rows = rows)
 
-    @app.route('/mypage')
+    @app.route('/mypage', methods=['GET', 'POST'])
     def mypage():
+        if request.method=='GET':
+            return render_template('mypage.html', name=session['uname'], uid = session['uid'])
+        else:
+            uname = session['uname']
+            it = request.form.get('it')
+            manu = request.form.get('manu')
+            serv = request.form.get('serv')
+            mana = request.form.get('mana')
+            design = request.form.get('design')
+            med = request.form.get('med')
+            media = request.form.get('media')
+
+            major = request.form.get('major')
+            medium = request.form.get('medium')
+            small = request.form.get('small')
+            start = request.form.get('start')
+            public = request.form.get('public')
+            listed = request.form.get('listed')
+
+            seo = request.form.get('seo')
+            cap = request.form.get('cap')
+            gg = request.form.get('gg')
+            bu = request.form.get('bu')
+            dae = request.form.get('dae')
+            ul = request.form.get('ul')
+            inc = request.form.get('inc')
+
+            p100 = request.form.get('p100')
+            p200 = request.form.get('p200')
+            p300 = request.form.get('p300')
+            p400 = request.form.get('p400')
+
+            w16 = request.form.get('w16')
+            w24 = request.form.get('w16')
+            w32 = request.form.get('w16')
+            w40 = request.form.get('w40')
+            w50 = request.form.get('w50')
+
+            mon = request.form.get('mon')
+            tue = request.form.get('tue')
+            wed = request.form.get('wed')
+            thu = request.form.get('thu')
+            fri = request.form.get('fri')
+            sat = request.form.get('sat')
+            sun = request.form.get('sun')
+
+            dedu = request.form.get('it')
+            gra = request.form.get('gra')
+            mas = request.form.get('mas')
+            hi = request.form.get('hi')
+            car = request.form.get('car')
+
+            if it == None:
+                it = '0'
+            if manu == None:
+                manu = '0'
+            if serv == None:
+                serv = '0'
+            if mana == None:
+                mana = '0'
+            if design == None:
+                design = '0'
+            if med == None:
+                med = '0'
+            if media == None:
+                media = '0'
+                
+            if major == None:
+                major = '0'
+            if medium == None:
+                medium = '0'
+            if small == None:
+                small = '0'
+            if start == None:
+                start = '0'
+            if public == None:
+                public = '0'
+            if listed == None:
+                listed = '0'
+
+            if seo == None:
+                seo = '0'
+            if cap == None:
+                cap = '0'
+            if gg == None:
+                gg = '0'
+            if bu == None:
+                bu = '0'
+            if dae == None:
+                dae = '0'
+            if ul == None:
+                ul = '0'
+            if inc == None:
+                inc = '0'
+            
+            if p100 == None:
+                p100 = '0' 
+            if p200 == None:
+                p200 = '0'
+            if p300 == None:
+                p300 = '0'
+            if p400 == None:
+                p400 = '0'
+
+            if w16 == None:
+                w16 = '0'
+            if w24 == None:
+                w24 = '0'
+            if w32 == None:
+                w32 = '0'
+            if w40 == None:
+                w40 = '0' 
+            if w50 == None:
+                w50 = '0'
+            
+            if mon == None:
+                mon = '0'
+            if tue == None:
+                tue = '0'
+            if wed == None:
+                wed = '0'
+            if thu == None:
+                thu = '0'
+            if fri == None:
+                fri = '0'
+            if sat == None:
+                sat = '0'
+            if sun == None:
+                sun = '0'
+            
+            if dedu == None:
+                dedu = '0'
+            if mas == None:
+                mas = '0'
+            if gra == None:
+                gra = '0'
+            if hi == None:
+                hi = '0'
+            if car == None:
+                car = '0'  
+            filter2 = dict()
+            filter2 = {
+                'uname' : uname,
+                'it' : it,
+                'manu' : manu,
+                'serv' : serv,
+                'mana' : mana,
+                'design' : design,
+                'med' : med,
+                'media' : media,
+                'p100' : p100,
+                'p200' : p200,
+                'p300' : p300,
+                'p400' : p400,
+                'seo' : seo,
+                'cap' : cap,
+                'gg' : gg,
+                'bu' : bu,
+                'dae' : dae,
+                'ul' : ul,
+                'inc' : inc,
+                'mon' : mon,
+                'tue' : tue,
+                'wed' : wed,
+                'thu' : thu,
+                'fri' : fri,
+                'sat' : sat,
+                'sun' : sun,
+                'w16' : w16,
+                'w24' : w24,
+                'w32' : w32,
+                'w40' : w40,
+                'w50' : w50,
+                'dedu' : dedu,
+                'gra' : gra,
+                'mas' : mas,
+                'hi' : hi,
+                'car' : car,
+                'major' : major,
+                'medium' : medium,
+                'small' : small,
+                'start' : start,
+                'public' : public,
+                'listed' : listed
+            }
+            print(filter2)
+            dataMod(filter2)
+            return redirect(url_for('home'))
         
-        return render_template('mypage.html', name=session['uname'], uid = session['uid'])
