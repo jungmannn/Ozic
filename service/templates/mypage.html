@@ -34,11 +34,85 @@
       <div class="container">
         <h2 class="text-center text-uppercase text-white">{{name}}님의 페이지</h2>
         <hr class="star-light mb-5">
+        {% if type == 0 %}
+
         <div class="row">
-          <div class="col-lg-4 ml-auto">
+          <div class="col-lg-5 ml-auto">
             <p class="lead">사용자 이름 : {{name}}</p>
             <p class="lead">사용자 아이디 : {{uid}}</p>
             <img width="200px" src='../static/img/profile.png'>
+            <div class="col-lg-6 mr-2">
+              <br>
+              <h4 class="lead">지원내역</h4>
+              {% if row == () %}
+              <h5>지원 내역이 없습니다.</h5>
+              {% elif row[0].get('승인') == None and row[0].get('종료') == 1 %}
+              <h5>{{row[0].get('기업명')}} <button type="button" class="btn btn-secondary btn-lg" disabled>종료</button></h5>
+              <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">
+                평점을 입력하세요
+              </button>
+
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">평점</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">평점을 고르시오</span>
+                      </button>
+                    </div>
+                    <img style="display: block; margin: 0px auto" width="200px" src='../static/img/profile.png'>
+                    <form method="POST">
+                      <div style="text-align: center" class="modal-body">
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="candi" value="4">
+                          <label style="color: blue" class="form-check-label" for="inlineCheckbox1">4.0</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="candi" value="3.5">
+                          <label style="color: blue" class="form-check-label" for="inlineCheckbox1">3.5</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="candi" value="3">
+                          <label style="color: blue" class="form-check-label" for="inlineCheckbox1">3.0</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="candi" value="2.5">
+                          <label style="color: blue" class="form-check-label" for="inlineCheckbox1">2.5</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="candi" value="2">
+                          <label style="color: blue" class="form-check-label" for="inlineCheckbox1">2.0</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="candi" value="1.5">
+                          <label style="color: blue" class="form-check-label" for="inlineCheckbox1">1.5</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="candi" value="1">
+                          <label style="color: blue" class="form-check-label" for="inlineCheckbox1">1.0</label>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" name="Cname" value="{{row[0].get('기업명')}}" class="btn btn-primary">Save
+                          Changes</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              {% elif row[0].get('승인') == 1 and row[0].get('종료') == 0%}
+              <h5>{{row[0].get('기업명')}} <button type="button" class="btn btn-light btn-lg" disabled>진행중</button></h5>
+              {% elif row[0].get('승인') == 1 and row[0].get('종료') == 1%}
+              <h5>{{row[0].get('기업명')}} <button type="button" class="btn btn-secondary btn-lg" disabled>종료</button></h5>
+              {% else %}
+              <h5>{{row[0].get('기업명')}} <button type="button" class="btn btn-secondary btn-lg" disabled>승인대기</button>
+              </h5>
+              {% endif %}
+            </div>
           </div>
           <div class="col-lg-6 mr-2">
             <p class="lead border text-center">사용자 데이터</p>
@@ -174,7 +248,7 @@
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="inc" id="exampleRadios2" value="option2">
+                      <input class="form-check-input" type="checkbox" name="inc" id="exampleRadios2" value="1">
                       <label class="form-check-label" for="exampleRadios2">
                         인천
                       </label>
@@ -248,7 +322,13 @@
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" name="mas" id="exampleRadios2" value="1">
                       <label class="form-check-label" for="exampleRadios2">
-                        석/박사
+                        석사
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="phd" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        박사
                       </label>
                     </div>
                     <div class="form-check">
@@ -294,11 +374,25 @@
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="w50" id="exampleRadios2" value="1">
+                      <input class="form-check-input" type="checkbox" name="wh24" id="exampleRadios2" value="1">
                       <label class="form-check-label" for="exampleRadios2">
-                        W50
+                        W24(재택)
                       </label>
                     </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="wh32" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        W32(재택)
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="wh40" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        W40(재택)
+                      </label>
+                    </div>
+
+
                 </div>
               </div>
               <div style='float:left; min-width:130px;'>
@@ -329,6 +423,12 @@
                         400-500
                       </label>
                     </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="p500" id="exampleRadios2" value="1">
+                      <label class="form-check-label" for="exampleRadios2">
+                        500이상
+                      </label>
+                    </div>
                 </div>
               </div>
 
@@ -336,11 +436,95 @@
             </div>
           </div>
         </div>
-        <div class="text-center mt-4">
-          <button id="btn-Yes" class="btn btn-xl btn-outline-light" type="submit">Modified</button>
+        {% else %}
+        <div class="row">
+          <div class="col-lg-4 ml-auto">
+            <p class="lead">이름 : {{name}}</p>
+            <p class="lead">관리자 아이디 : {{uid}}</p>
+            <img width="200px" src='../static/img/profile.png'>
+          </div>
+          <div class="col-lg-6 mr-2">
+            <h4 class="lead">지원내역</h4>
+            {% if row[0].get('지원자') == None %}
+            <h5>지원 내역이 없습니다.</h5>
+            {% elif row[0].get('승인') == 1 and row[0].get('종료') == 0 %}
+            <h5>{{rows2[0].get('rating')}} {{row[0].get('지원자')}} <button href='/' type="submit" name='accept2' value='1'
+                class="btn btn-light btn-lg">종료</button></h5>
+            {% elif row[0].get('승인') == 0 %}
+            <h5>{{rows2[0].get('rating')}} {{row[0].get('지원자')}} <button type="submit" name='accept' value='1'
+                class="btn btn-outline-primary">승인</button></h5>
+            {% elif row[0].get('승인') == None and row[0].get('종료') == 1%}
+            <h5>{{rows2[0].get('rating')}} {{row[0].get('지원자')}} <button type="button" class="btn btn-secondary"
+                disabled>종료</button></h5>
+            {% elif row[0].get('승인') == 1 and row[0].get('종료') == 1 %}
+            <h5>{{rows2[0].get('rating')}} {{row[0].get('지원자')}} <button type="button" class="btn btn-secondary btn-lg"
+                disabled>종료</button></h5>
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">
+              평점을 입력하세요
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">평점</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">평점을 고르시오</span>
+                    </button>
+                  </div>
+                  <img style="display: block; margin: 0px auto" width="200px" src='../static/img/profile.png'>
+                  <form method="POST">
+                    <div style="text-align: center" class="modal-body">
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="comp" value="4">
+                        <label style="color: blue" class="form-check-label" for="inlineCheckbox1">4.0</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="comp" value="3.5">
+                        <label style="color: blue" class="form-check-label" for="inlineCheckbox1">3.5</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="comp" value="3">
+                        <label style="color: blue" class="form-check-label" for="inlineCheckbox1">3.0</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="comp" value="2.5">
+                        <label style="color: blue" class="form-check-label" for="inlineCheckbox1">2.5</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="comp" value="2">
+                        <label style="color: blue" class="form-check-label" for="inlineCheckbox1">2.0</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="comp" value="1.5">
+                        <label style="color: blue" class="form-check-label" for="inlineCheckbox1">1.5</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="comp" value="1">
+                        <label style="color: blue" class="form-check-label" for="inlineCheckbox1">1.0</label>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="submit" name="Hname" value="{{row[0].get('지원자')}}" class="btn btn-primary">Save
+                        Changes</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+          </div>
         </div>
-      </div>
+        {% endif %}
     </form>
+    <div class="text-center mt-4">
+      <button class="btn btn-xl btn-outline-light">완료</button>
+    </div>
+    </div>
+
   </section>
 
 
@@ -358,7 +542,6 @@
 
   <!-- Custom scripts for this template -->
   <script src="static/js/freelancer.min.js"></script>
-
 </body>
 
 </html>

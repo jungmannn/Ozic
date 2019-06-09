@@ -33,34 +33,44 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">기업</th>
-                <th scope="col">it직종</th>
-                <th scope="col">광고외주</th>
-                <th scope="col">문서작업</th>
-                <th scope="col">50만원이하</th>
-                <th scope="col">100만원이하</th>
-                <th scope="col">150만원이하</th>
-                <th scope="col">서울</th>
-                <th scope="col">경기</th>
-                <th scope="col">인천</th>
+                <th scope="col">평점</th>
+                <th scope="col">기업이름</th>
+                <th scope="col">정확도</th>
+                <th scope="col">신청여부</th>
             </tr>
         </thead>
         <tbody>
-            {% for code in rows: %}
+
             <tr>
-                <th scope="row">1</th>
-                <td>{{ code.get('uname') }}</td>
-                <td>{{ code.get('it') }}</td>
-                <td>{{ code.get('ad') }}</td>
-                <td>{{ code.get('document') }}</td>
-                <td>{{ code.get('pay50u') }}</td>
-                <td>{{ code.get('pay100u') }}</td>
-                <td>{{ code.get('pay150u') }}</td>
-                <td>{{ code.get('seoul') }}</td>
-                <td>{{ code.get('gyeonggi') }}</td>
-                <td>{{ code.get('incheon') }}</td>
+                <form method="POST">
+                    <th class="counterCell" scope="row" width='20%'>번째 추천기업</th>
+                    <td>{{ row[0].get('rating') }}점</td>
+                    <td><a href="/">{{ rows.get('First') }}</a></td>
+                    <td>{{ rows.get('Accuracy_Fisrt') }} %</td>
+                    <td><button type="submit" name="cname" value="{{ rows.get('First') }}"
+                            class="btn btn-outline-primary">신청</button></td>
+                </form>
             </tr>
-            {% endfor %}
+            <tr>
+                <form method="POST">
+                    <th class="counterCell" scope="row" width='20%'>번째 추천기업</th>
+                    <td>{{ row[1].get('rating') }}점</td>
+                    <td><a href="/">{{ rows.get('Second') }}</a></td>
+                    <td>{{ rows.get('Accuracy_Second') }} %</td>
+                    <td><button type="submit" name="cname" value="{{ rows.get('Second') }}"
+                            class="btn btn-outline-primary">신청</button></td>
+                </form>
+            </tr>
+            <tr>
+                <form method="POST">
+                    <th class="counterCell" scope="row" width='20%'>번째 추천기업</th>
+                    <td>{{ row[2].get('rating') }}점</td>
+                    <td><a href="/">{{ rows.get('Third') }}</a></td>
+                    <td>{{ rows.get('Accuracy_Third') }} %</td>
+                    <td><button type="submit" name="cname" value="{{ rows.get('Third') }}"
+                            class="btn btn-outline-primary">신청</button></td>
+                </form>
+            </tr>
         </tbody>
     </table>
 </body>
@@ -73,3 +83,13 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+<style>
+    table {
+        counter-reset: tableCount;
+    }
+
+    .counterCell:before {
+        content: counter(tableCount);
+        counter-increment: tableCount;
+    }
+</style>
