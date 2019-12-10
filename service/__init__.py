@@ -16,7 +16,7 @@ def initRoute(app):
     def home():
         if not 'uid' in session:# 세션체크
             return redirect( url_for('login') )
-        # 로그인 성공 => 쿠키 설정
+        # 로그인 성공 => 쿠키 설정                                                                              
         resp = make_response( render_template('index.html', name=session['uname']))
         # 쿠키 세팅
         resp.set_cookie('uid', session['uid'])

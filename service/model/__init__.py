@@ -249,7 +249,7 @@ def matchView(row, sType):
                                 db='ozic_db',
                                 charset='utf8',
                                 cursorclass=sql.cursors.DictCursor)
-        print('디비접속성공')    
+        print('디비접속성공') 
         with db_session.cursor() as cursor:
             if sType == 1:
                 sql_str = ''' 
