@@ -3,7 +3,6 @@
 
 ## Contents
 1. Outline
-2. 
 2. Directions for Use
 3. Technology Stack
 4. Complement
