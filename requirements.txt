@@ -5,4 +5,4 @@ Jinja2==2.10.1
 MarkupSafe==1.1.1
 numpy==1.16.4
 PyMySQL==0.9.3
-Werkzeug==0.15.2
+Werkzeug==0.15.3
